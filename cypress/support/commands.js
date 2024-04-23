@@ -35,3 +35,4 @@ Cypress.Commands.add('getframe', (iframe) => {
 
 ///<reference types="Cypress"/> 
 ///<reference types="Cypress-xpath"/>
+

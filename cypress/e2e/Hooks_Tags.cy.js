@@ -15,12 +15,10 @@ describe('Hooks',()=>{
         console.log('..............logout................')
         cy.visit('https://flipkart.com')
     })
-
     it('verifytitle', ()=>{
         console.log('............Title..............')
     })
-    it('list the products',()=>{
+    it.skip('list the products',()=>{
         console.log('.............products.................')
     })
-   
-})
+   })

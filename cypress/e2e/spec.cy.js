@@ -96,13 +96,14 @@ it('window Alerts', ()=>{
 })})
 it('confirm Alerts', ()=>{
      cy.visit('https://the-internet.herokuapp.com/javascript_alerts')
-//confirmationalert
+//confirmationalert ok
 cy.get('button[onclick="jsConfirm()"]').click()
 cy.on ('window:confirm',(t)=>{
 expect(t).to.contains('I am a JS Confirm')
 })
 //cy.get('#result').should('have.text','You clicked: Ok')
 //cy.wait(5000)
+//cancel
 cy.get('button[onclick="jsConfirm()"]').click()
 cy.on('window:confirm',()=> false)
 cy.get('#result').should('have.text','You clicked: Cancel')
@@ -118,7 +119,7 @@ cy.stub(win,'prompt').returns('Welcome')
     cy.get('#result').should('have.text','You entered: Welcome')
    
   })
-  it('prompt Alerts', ()=>{
+  it('authentication Alerts', ()=>{
   // cy.visit('http://admin:admin@the-internet.herokuapp.com/basic_auth')
 
   cy.visit('http://the-internet.herokuapp.com/basic_auth',{auh:{username:'admin',password:'admin'}});
@@ -140,6 +141,7 @@ it('child window & Navigation', ()=>{
   cy.reload();
 })
 
+
 it('iframe approch1', ()=>{
   cy.visit('http://the-internet.herokuapp.com/iframe');
   //switching in to iframe
@@ -160,12 +162,22 @@ it('iframe approch2', ()=>{
   cy.get('[aria-label="Bold"]').click();
 })
 
-it('iframe approch3 using cypress-iframe plugin', ()=>{
+it('gettooltip',()=>{
+  cy.visit('https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_tooltip')
+  cy.frameLoaded('#iframeResult');
+  cy.iframe('#iframeResult')
+   cy.get('#tooltip').trigger('mouseover')
+
+})
+
+it.only('iframe approch3 using cypress-iframe plugin', ()=>{
   cy.visit('http://the-internet.herokuapp.com/iframe');
   //switching in to iframe 
 cy.frameLoaded('#mce_0_ifr')
 cy.iframe('#mce_0_ifr').clear().type('Welcome {selectall}');
  cy.get('[aria-label="Bold"]').click();
+ //cy.get('.tox-tbtn__select-label').trigger('mouseover')
+
 })
 
 //Handling WebTable 
