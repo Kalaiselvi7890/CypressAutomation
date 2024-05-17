@@ -121,7 +121,7 @@ cy.stub(win,'prompt').returns('Welcome')
   it('prompt Alerts', ()=>{
   // cy.visit('http://admin:admin@the-internet.herokuapp.com/basic_auth')
 
-  cy.visit('http://the-internet.herokuapp.com/basic_auth',{auh:{username:'admin',password:'admin'}});
+  cy.visit('http://the-internet.herokuapp.com/basic_auth',{auth:{username:'admin',password:'admin'}});
 
 })
 
@@ -169,16 +169,16 @@ cy.iframe('#mce_0_ifr').clear().type('Welcome {selectall}');
 })
 
 //Handling WebTable 
-// beforeEach('launch url', ()=>{
-// cy.visit('https://demo.opencart.com/admin/index.php?route=common/login')
-// cy.wait(2000)
-// cy.get('#input-username').type('demo');
-// cy.get('#input-password').type('demo');
-// cy.get('[type="submit"]').click();
-// cy.get('.btn-close').click();
-// cy.get('#menu-customer>a').click();
-// cy.get('#menu-customer>ul>li:first-child').click();
-// })
+beforeEach('launch url', ()=>{
+cy.visit('https://demo.opencart.com/admin/index.php?route=common/login')
+cy.wait(2000)
+cy.get('#input-username').type('demo');
+cy.get('#input-password').type('demo');
+cy.get('[type="submit"]').click();
+cy.get('.btn-close').click();
+cy.get('#menu-customer>a').click();
+cy.get('#menu-customer>ul>li:first-child').click();
+})
 it('check data from specific rows and coloum', ()=>{
   cy.get('.table-responsive>table>tbody>tr').should('be.visible').should('have.length',10)
   cy.get('.table-responsive>table>tbody>tr>td').should('be.visible').should('have.length',70)

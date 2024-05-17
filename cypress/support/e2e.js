@@ -65,3 +65,22 @@ Cypress.Commands.add('link', (label) => {
 //     }
 //   });
 // };
+function queryTestdb(query, config){
+  //create a new connection using credentials from cypress.json
+  const connection= mysql.createConnection(config.env.db);
+
+  //start connection to database
+  connection.connect();
+
+  //execute query + disconnect to db as a promise
+return new Promise((resolve, reject) => {
+  connection.query(query, (error, results)=>{
+    if(error) reject(error);
+    else(connection.end())
+
+    //console log results
+    return resolve(results) ;
+  })
+})
+
+}
