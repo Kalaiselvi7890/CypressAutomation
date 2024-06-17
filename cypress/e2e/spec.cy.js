@@ -18,7 +18,7 @@ describe('Cypress topic', () => {
   cy.get('#email').should('have.value', 'kalaiselvi')
 })
 it('getcurrenturl', () => {
-  cy.visit('https://facebook.com')
+  cy.visit('https://facebook.com');
   cy.url().should('contain',"face")
   cy.url().should('include','book')
   cy.url().should('exist','facebook')
